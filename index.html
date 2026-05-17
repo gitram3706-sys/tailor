@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raji Tailor | Premium Blouse Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4eee1;
+            --text-main: #2d2424;
+            --text-muted: #6e5f5f;
+            --accent: #8c304f; /* Deep Elegant Wine */
+            --accent-light: #dca7a7;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(253, 251, 247, 0.95);
+        }
+
+        .dark {
+            --bg-primary: #181313;
+            --bg-secondary: #241c1c;
+            --text-main: #f5f0f0;
+            --text-muted: #bdafa1;
+            --accent: #e06287;
+            --accent-light: #4a2831;
+            --card-bg: #241c1c;
+            --nav-bg: rgba(24, 19, 19, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-main);
+            transition: background 0.4s, color 0.4s;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        #modeBtn {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        #modeBtn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2)), 
+                        url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1400");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-bottom: 35px;
+        }
+
+        .cta-btn {
+            padding: 16px 40px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: var(--text-main);
+            transform: translateY(-3px);
+        }
+
+        /* COMMON SECTION STYLES */
+        section {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .section-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        section h2 {
+            font-size: 44px;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* SERVICES & PRICING CARDS */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 45px 35px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+            transition: .4s ease;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .card ul {
+            list-style: none;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 20px;
+        }
+
+        .card ul li {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card ul li i {
+            color: var(--accent);
+            font-size: 11px;
+        }
+
+        /* PRICING VARIANT */
+        .price-card {
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: var(--accent);
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 420px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(140, 48, 79, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: .4s ease;
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* BOOKING FORM */
+        #appointment {
+            background: var(--bg-secondary);
+        }
+
+        .form-wrapper {
+            max-width: 550px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: var(--bg-primary);
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--text-main);
+        }
+
+        /* TESTIMONIALS SLIDER */
+        .testimonial-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 180px;
+        }
+
+        .review-card {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .review-card.active {
+            display: block;
+        }
+
+        .stars {
+            color: #d4af37;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .review-author {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CONTACT */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            transition: 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(140, 48, 79, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .contact-item p {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .call-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .call-link:hover {
+            border-bottom: 2px solid var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1414;
+            color: #bfaea8;
+            padding: 40px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* FLOATING WHATSAPP */
+        .whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(37,211,102,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media(max-width: 768px) {
+            nav { padding: 20px 5%; }
+            nav ul { display: none; }
+            .hero { padding: 0 5%; text-align: center; justify-content: center; }
+            .hero h1 { font-size: 40px; }
+            section { padding: 70px 5%; }
+            .form-wrapper { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Raji Tailor</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="modeBtn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Bespoke Blouse Tailoring Built for Perfection</h1>
+        <p>Experience the ultimate precision fit. We specialize exclusively in custom luxury blouse stitching, bridal designs, and alterations crafted to celebrate your unique style.</p>
+        <button class="cta-btn" onclick="location.href='#appointment'">Book An Appointment</button>
+    </div>
+</section>
+
+<section id="services">
+    <span class="section-tag">Expertise</span>
+    <h2>Our Specializations</h2>
+    <p class="section-desc">Dedicated exclusively to master blouse crafting, delivering structural perfection and meticulous design details.</p>
+    
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-cut"></i></div>
+            <h3>Custom Stitching</h3>
+            <p>Beautifully structured standard or traditional blouses shaped precisely to your body measurements.</p>
+            <ul>
+                <li><i class="fas fa-circle"></i> Cotton, Silk, & Brocade variations</li>
+                <li><i class="fas fa-circle"></i> Perfect necklines & clean alignments</li>
+                <li><i class="fas fa-circle"></i> 5 - 7 Day standard completion</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-compress-alt"></i></div>
+            <h3>Blouse Alterations</h3>
+            <p>Reshaping or adjusting your treasured family heirlooms or loose blouses to absolute snug fitting.</p>
+            <ul>
+                <li><i class="fas fa-circle"></i> Armhole adjustments & restructuring</li>
+                <li><i class="fas fa-circle"></i> Side-seam expanding or narrowing</li>
+                <li><i class="fas fa-circle"></i> Swift 2 - 3 Day service turnarounds</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-gem"></i></div>
+            <h3>Designer & Bridal</h3>
+            <p>High-end premium statement pieces displaying majestic embroidery work, heavy patterns, and custom aesthetics.</p>
+            <ul>
+                <li><i class="fas fa-circle"></i> Intricate Maggam & Aari embroidery</li>
+                <li><i class="fas fa-circle"></i> Included step-by-step sizing checks</li>
+                <li><i class="fas fa-circle"></i> 10 - 14 Day custom timeline</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <span class="section-tag">Lookbook</span>
+    <h2>Our Recent Work</h2>
+    <p class="section-desc">A glance at the intricate cuts and elegant fits tailored inside our boutique workshop.</p>
+    
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f" alt="Blouse Design 1">
+            <div class="gallery-overlay"><span>Bridal Cut</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c" alt="Blouse Design 2">
+            <div class="gallery-overlay"><span>Classic Silk</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Blouse Design 3">
+            <div class="gallery-overlay"><span>Designer Sleeve</span></div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <span class="section-tag">Investment</span>
+    <h2>Transparent Rates</h2>
+    <p class="section-desc">Fair, upfront estimates built on the care, details, and complexity of each tailoring project.</p>
+    
+    <div class="cards-container">
+        <div class="card price-card">
+            <h3>Custom Stitch</h3>
+            <div class="price-tag">₹400 - ₹600</div>
+            <p>Clean classic stitching with lining settings included.</p>
+        </div>
+        <div class="card price-card">
+            <h3>Alteration Work</h3>
+            <div class="price-tag">₹150 - ₹300</div>
+            <p>Perfect tightening, loosening, or reshaping structures.</p>
+        </div>
+        <div class="card price-card">
+            <h3>Designer Blouse</h3>
+            <div class="price-tag">₹1500+</div>
+            <p>Depends on heavy embroidery, patterns, and stone work details.</p>
+        </div>
+    </div>
+</section>
+
+<section id="appointment">
+    <span class="section-tag">Booking</span>
+    <h2>Reserve Your Fitting Session</h2>
+    <p class="section-desc">Plan your consultation date below. We will get back to you immediately to confirm your timing slot.</p>
+    
+    <div class="form-wrapper">
+        <form id="bookingForm">
+            <div>
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter Full Name" required>
+            </div>
+            <div>
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter Contact Number" required>
+            </div>
+            <div>
+                <label>Type of Service</label>
+                <select required>
+                    <option value="">Select Service Specialty</option>
+                    <option>Custom Blouse Stitching</option>
+                    <option>Blouse Alteration</option>
+                    <option>Designer Bridal Blouse</option>
+                </select>
+            </div>
+            <div>
+                <label>Custom Requests / Fabric Notes</label>
+                <textarea placeholder="Tell us about your neck style ideas, deadline dates, or embroidery targets..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Request Fit Schedule</button>
+        </form>
+    </div>
+</section>
+
+<section id="reviews">
+    <span class="section-tag">Kind Words</span>
+    <h2>Client Testimonials</h2>
+    <p class="section-desc" style="margin-bottom: 40px;">Read feedback from customers who rely on us for their special events.</p>
+    
+    <div class="testimonial-container">
+        <div class="review-card active">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"The armhole fitting was perfect! I have had fitting problems everywhere else, but Raji Tailors did it flawlessly on the first try."</p>
+            <div class="review-author">— Priya R., Coimbatore</div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Stitched my heavy designer bridal blouse here. The embroidery alignments and neck patterns match exactly what I dreamed of."</p>
+            <div class="review-author">— Meera Krishnan</div>
+        </div>
+    </div>
+    <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+    </div>
+</section>
+
+<section id="contact">
+    <span class="section-tag">Location</span>
+    <h2>Visit Our Studio</h2>
+    <p class="section-desc">Drop by with your luxury dress fabrics and materials anytime during our working hours.</p>
+    
+    <div class="contact-info">
+        <div class="contact-item" onclick="window.location.href='tel:+919597747680'" style="cursor: pointer;">
+            <i class="fas fa-phone-alt"></i>
+            <p><strong>Call Us</strong><br><a href="tel:+919597747680" class="call-link">+91 9597747680</a></p>
+        </div>
+        <div class="contact-item" onclick="window.open('https://maps.google.com/?q=Sri+Murugan+Nagar,+Thudiyalur,+Coimbatore', '_blank')" style="cursor: pointer;">
+            <i class="fas fa-map-marker-alt"></i>
+            <p><strong>Boutique Address</strong><br>Sri Murugan Nagar,<br>Thudiyalur, Coimbatore.</p>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <p><strong>Timings</strong><br>Mon – Sun: 9AM – 8PM</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Raji Tailor Studio. Crafted Exclusively for Master Blouse Fitting.</p>
+</footer>
+
+<a href="https://wa.me/919597747680?text=Hi%20Raji%20Tailor,%20I%20want%20to%20book%20a%20blouse%20stitching%20appointment." class="whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Theme Toggle Logic
+    const modeBtn = document.getElementById("modeBtn");
+    const icon = modeBtn.querySelector("i");
+    
+    modeBtn.onclick = () => {
+        document.body.classList.toggle("dark");
+        if(document.body.classList.contains("dark")) {
+            icon.classList.replace("fa-moon", "fa-sun");
+        } else {
+            icon.classList.replace("fa-sun", "fa-moon");
+        }
+    }
+
+    // Interactive Testimonial Slider Logic
+    let currentIdx = 0;
+    const slides = document.querySelectorAll(".review-card");
+    const dots = document.querySelectorAll(".dot");
+
+    function currentSlide(n) {
+        slides[currentIdx].classList.remove("active");
+        dots[currentIdx].classList.remove("active");
+        currentIdx = n;
+        slides[currentIdx].classList.add("active");
+        dots[currentIdx].classList.add("active");
+    }
+    
+    setInterval(() => {
+        let next = (currentIdx + 1) % slides.length;
+        currentSlide(next);
+    }, 5000);
+
+    // Form submission - Send to WhatsApp and show Thank You box
+    document.getElementById('bookingForm').onsubmit = (e) => {
+        e.preventDefault();
+        
+        const form = e.target;
+        const name = form.querySelector('input[type="text"]').value;
+        const phone = form.querySelector('input[type="tel"]').value;
+        const service = form.querySelector('select').value;
+        const notes = form.querySelector('textarea').value;
+        
+        // Format the message for WhatsApp
+        const message = `*New Appointment Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'No additional notes'}`;
+        
+        // Send to tailor's WhatsApp
+        const whatsappUrl = `https://wa.me/919597747680?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+        
+        // Show Thank You box
+        const thankYouBox = document.createElement('div');
+        thankYouBox.style.position = 'fixed';
+        thankYouBox.style.top = '50%';
+        thankYouBox.style.left = '50%';
+        thankYouBox.style.transform = 'translate(-50%, -50%)';
+        thankYouBox.style.background = 'white';
+        thankYouBox.style.padding = '20px';
+        thankYouBox.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+        thankYouBox.style.borderRadius = '10px';
+        thankYouBox.style.textAlign = 'center';
+        thankYouBox.innerHTML = `<h2>Thank You!</h2><p>Your appointment request has been sent. We will contact you shortly.</p>`;
+        document.body.appendChild(thankYouBox);
+
+        setTimeout(() => {
+            thankYouBox.remove();
+        }, 5000);
+
+        form.reset();
+    };
+</script>
+
+</body>
+</html>
